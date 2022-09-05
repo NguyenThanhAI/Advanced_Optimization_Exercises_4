@@ -39,14 +39,16 @@ $$\begin{cases} 0 \in \partial \Big ( f(x) + v^T\Big \lbrack Ax - y \Big \rbrack
 
 ## 4. Từ điều kiện KKT hãy tìm nghiệm tối ưu của bài toán:
 
-$$\begin{cases} 0 \in \partial \Big ( f(x) + v^T\Big \lbrack Ax - y \Big \rbrack \Big) \\ Ax - y = 0 \end{cases} \iff \begin{cases} \nabla f(x) + \nabla \Big ( v^T \Big \lbrack Ax - y \Big \rbrack \Big) = 0\\ Ax - y = 0 \end{cases}$$
+$$\begin{cases} 0 \in \partial \Big ( f(x) + v^T\Big \lbrack Ax - y \Big \rbrack \Big) \\ Ax - y = 0 \end{cases} \Leftrightarrow \begin{cases} \nabla f(x) + \nabla \Big ( v^T \Big \lbrack Ax - y \Big \rbrack \Big) = 0\\ Ax - y = 0 \end{cases}$$
 
-$$\begin{cases} x + A^Tv=0 \\ Ax - y = 0 \end{cases} \iff \begin{cases} x = -A^T v \\ Ax = y \end{cases}$$
+$$\begin{cases} x + A^Tv=0 \\ Ax - y = 0 \end{cases} \Leftrightarrow \begin{cases} x = -A^T v \\ Ax = y \end{cases}$$
 
 $$\begin{cases} x = -A^T v \\ - A A^T v =y \end{cases} $$ 
 
 Ta xét hệ phương trình:
 
-$$A A^T v = 0 \Rightarrow v^T A A^T v = 0$$
+$$A A^T v = 0 \Rightarrow v^T A A^T v = 0 \Leftrightarrow (A^T v)^T (A^T v)=0 \Leftrightarrow \lVert A^T v \rVert_2^2 = 0$$
 
-$$ \begin{cases} x = A^T  (A A^T)^{-1}y \\ v = - (A A^T)^{-1}y \end{cases}$$
+Do $rank(A)=m$ nên các cột của ma trận $A^T$ (các hàng của ma trận $A$) độc lập tuyến tính vậy để $A^T v = 0 \Leftrightarrow v = 0$. Vậy $AA^Tv=0 \Leftrightarrow v =0$ nên các cột của ma trận $AA^T$ độc lập tuyến tính, ta suy ra $A A^T$ khả ngịch
+
+$$ \Rightarrow \begin{cases} x = A^T  (A A^T)^{-1}y \\ v = - (A A^T)^{-1}y \end{cases}$$
