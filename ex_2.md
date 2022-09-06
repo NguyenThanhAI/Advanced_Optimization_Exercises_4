@@ -3,7 +3,7 @@
 
 $$\min 3 x_1 + 2 x_2 \\ \text{s.t. } x_1^2 - 2 x_1 + x_2^2 = 3$$
 
-Đặt $f(x) = 3 x_1 + 2 x_2$
+Đặt $f(x_1, x_2) = 3 x_1 + 2 x_2$
 
 ## Cách 1: Sử dụng phương pháp nhân tử Lagrange:
 
@@ -23,19 +23,21 @@ $$\dfrac{(2\lambda - 3)^2}{(2\lambda)^2}-2 \dfrac{2\lambda -3}{2\lambda} + \dfra
 
 $$\Rightarrow \begin{cases} x_1=\dfrac{-2\dfrac{\sqrt{13}}{4} - 3}{-2\dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13} + 6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{-\dfrac{\sqrt{13}}{4}}=\dfrac{4}{\sqrt{13}} \\ \lambda = -\dfrac{\sqrt{13}}{4} \end{cases}$$
 
-$$\Rightarrow f(x) = 3 x_1 + 2 x_2 = \dfrac{3\sqrt{13}+18}{\sqrt{13}} + \dfrac{8}{\sqrt{13}}=\dfrac{3\sqrt{13}+26}{\sqrt{13}} =3 + 2\sqrt{13}$$
+$$\Rightarrow f(x_1, x_2) = 3 x_1 + 2 x_2 = \dfrac{3\sqrt{13}+18}{\sqrt{13}} + \dfrac{8}{\sqrt{13}}=\dfrac{3\sqrt{13}+26}{\sqrt{13}} =3 + 2\sqrt{13}$$
 
 - Với $\lambda = \dfrac{\sqrt{13}}{4}$:
 
 $$\Rightarrow \begin{cases} x_1 = \dfrac{2 \dfrac{\sqrt{13}}{4}-3}{2 \dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{\dfrac{\sqrt{13}}{4}}=-\dfrac{4}{\sqrt{13}} \\ \lambda = \dfrac{\sqrt{13}}{4} \end{cases}$$
 
-$$\Rightarrow f(x)=3x_1 + 2 x_2 = \dfrac{3\sqrt{13}-18}{\sqrt{13}}-\dfrac{8}{\sqrt{13}}=\dfrac{3\sqrt{13}-26}{\sqrt{13}}=3-2\sqrt{13}$$
+$$\Rightarrow f(x_1, x_2)=3x_1 + 2 x_2 = \dfrac{3\sqrt{13}-18}{\sqrt{13}}-\dfrac{8}{\sqrt{13}}=\dfrac{3\sqrt{13}-26}{\sqrt{13}}=3-2\sqrt{13}$$
 
-Vậy $f(x)$ đạt giá trị nhỏ nhất tại:
+Vậy $f(x_1, x_2)$ đạt giá trị nhỏ nhất tại:
 
 $$\begin{cases} x_1 = \dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2 = -\dfrac{4}{\sqrt{13}}\end{cases}$$
 
 và giá trị nhỏ nhất là:
 
-$$\min f(x)=3x_1 + 2 x_2=3 - 2\sqrt{13} \\ \text{s.t. } x_1^2 - 2 x_1 + x_2^2 = 3$$
+$$\min f(x_1, x_2)=3x_1 + 2 x_2=3 - 2\sqrt{13} \\ \text{s.t. } x_1^2 - 2 x_1 + x_2^2 = 3$$
+
+## Cách 2: Sử dụng điều kiện Karush - Kuhn - Tucker
 
