@@ -1,0 +1,335 @@
+\documentclass[14pt, a4paper]{article}
+\usepackage{minitoc}
+\usepackage[left=3.00cm, right=2.5cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{blindtext}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{vietnam}
+\usepackage[center]{caption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyhdr} % header, footer
+\usepackage{hyperref} % loại bỏ border với mục lục và công thức
+\usepackage[nonumberlist, nopostdot, nogroupskip]{glossaries}
+\usepackage{glossary-superragged}
+\setglossarystyle{superraggedheaderborder}
+\pagestyle{fancy}
+%\usepackage[style=numeric,sortcites]{biblatex}
+%\addbibresource{ref.bib}
+%\usepackage[numbers]{natbib}
+\usepackage{indentfirst}
+\usepackage[natbib,backend=biber,style=ieee, sorting=ynt]{biblatex}
+\bibliography{ref.bib}
+
+\graphicspath{{./figures/}}
+
+%\renewbibmacro*{cite}{%
+%  \printtext[bibhyperref]{%
+%    \printfield{prefixnumber}%
+%    \printfield{labelnumber}%
+%    \ifbool{bbx:subentry}%
+%      {\printfield{entrysetcount}}%
+%   \ifnumequal{\value{citecount}}{\value{citetotal}-1}%
+%       {\gdef\multicitedelim{\addspace\bibstring{and}\space}}%
+%       {\gdef\multicitedelim{\addcomma\space}}%
+%    }%
+%}
+
+%\makenoidxglossaries
+%
+%% Danh mục thuật ngữ
+%\newglossaryentry{GMRES}
+%{
+%	name={GMRES},
+%	description={Generalized Minimal Residual Method}
+%}
+%
+%\newglossaryentry{MINRES}
+%{
+%	name={MINRES},
+%	description={Minimal Residual Method}
+%}
+%
+%\hypersetup{
+%    colorlinks=false,
+%    pdfborder={0 0 0},
+%}
+%
+%\title{Tiểu luận phương pháp số cho đại số tuyến tính}
+%
+%\author{Nguyễn Chí Thanh}
+%
+%%\date{24-04-2022}
+\fancyhf{}
+\rhead{\textbf{Môn học: Tối ưu hóa nâng cao}}
+\lhead{\textbf{GVHD: TS. Hoàng Nam Dũng}}
+\rfoot{\thepage}
+\lfoot{\textbf{Học viên thực hiện: Nguyễn Chí Thanh - Nguyễn Đức Thịnh}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%
+%\numberwithin{equation}{section}
+%\numberwithin{algorithm}{section}
+%\numberwithin{figure}{section}
+%
+%\setlength{\parindent}{0.5cm}
+%
+%\setcounter{secnumdepth}{3} % Cho phép subsubsection trong report
+%\setcounter{tocdepth}{3} % Chèn subsubsection vào bảng mục lục
+
+%\newtheorem{dl}{Định lý}
+%\newtheorem{md}{Mệnh đề}
+%\newtheorem{bd}{Bổ đề}
+%\newtheorem{dn}{Định nghĩa}
+%\newtheorem{hq}{Hệ quả}
+
+%\newtheorem{baitap}{Bài tập}
+%\newtheorem*{loigiai}{Lời giải}
+
+%\numberwithin{dl}{section}
+%\numberwithin{md}{section}
+%\numberwithin{bd}{section}
+%\numberwithin{dn}{section}
+%\numberwithin{hq}{section}
+
+\setlength{\parindent}{0cm}
+
+\newtheorem{dl}{Định lý}
+\newtheoremstyle{sltheorem}
+{}                % Space above
+{}                % Space below
+{\normalfont}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{ }               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{sltheorem}
+\newtheorem{baitap}{Bài tập}
+\newtheoremstyle{soltheorem}
+{}                % Space above
+{}                % Space below
+{\normalfont}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{\newline}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{soltheorem}
+\newtheorem*{loigiai}{Lời giải}
+
+\onehalfspacing
+
+\begin{document}
+
+    \begin{titlepage}
+
+        \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+        \center % Center everything on the page
+
+        %----------------------------------------------------------------------------------------
+        %	HEADING SECTIONS
+        %----------------------------------------------------------------------------------------
+        \textsc{\LARGE Đại học Quốc Gia Hà Nội}\\[0.5cm]
+        \textsc{\LARGE Trường đại học Khoa học tự nhiên}\\[0.5cm] % Name of your university/college
+        \textsc{\LARGE Khoa Toán - Cơ - Tin học}\\[0.5cm]
+
+        \includegraphics[scale=0.2]{HUS-logo.jpg}\\[0.5cm]
+
+        \textsc{\Large Chuyên ngành: Khoa học dữ liệu}\\[0.5cm] % Major heading such as course name
+
+
+        %----------------------------------------------------------------------------------------
+        %	TITLE SECTION
+        %----------------------------------------------------------------------------------------
+
+        \HRule \\[0.4cm]
+        { \huge \bfseries Bài tập môn học}\\[0.4cm] % Title of your document
+        \HRule \\[1.5cm]
+
+        \textsc{\Large Môn học: Tối ưu hóa nâng cao}\\[1.5cm] % Minor heading such as course title
+
+
+        \textsc{\Large Bài tập 4}\\[1.5cm]
+
+
+        %----------------------------------------------------------------------------------------
+        %	AUTHOR SECTION
+        %----------------------------------------------------------------------------------------
+        \begin{minipage}{0.4\textwidth}
+            \begin{flushleft} \Large
+            \emph{Giảng viên hướng dẫn:} \\
+            TS. Hoàng Nam Dũng % Supervisor's Name
+            \end{flushleft}
+        \end{minipage}\\[1cm]
+
+        \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \Large
+        \emph{Nhóm học viên thực hiện:}\\
+        Nguyễn Chí Thanh \\
+        MSHV: 21007925 \\ % Your name
+        Nguyễn Đức Thịnh \\
+        MSHV: 21007923 \\
+        Lớp: Khoa học dữ liệu - K4
+        \end{flushleft}
+        \end{minipage}
+
+
+        % If you don't want a supervisor, uncomment the two lines below and remove the section above
+        %\Large \emph{Author:}\\
+        %John \textsc{Smith}\\[3cm] % Your name
+
+        %----------------------------------------------------------------------------------------
+        %	DATE SECTION
+        %----------------------------------------------------------------------------------------
+
+        % I don't want day because it is English
+        % {\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+        %----------------------------------------------------------------------------------------
+        %	LOGO SECTION
+        %----------------------------------------------------------------------------------------
+
+        %\includegraphics{logo/rsz_3logo-khtn.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+        %----------------------------------------------------------------------------------------
+
+        \vfill % Fill the rest of the page with whitespace
+
+    \end{titlepage}
+
+    \nocite{*}
+
+    \newpage
+
+    \begin{baitap}
+        Cho $A \in \mathbb{R}^{m\times n}$ và $rank(A)=m$. Xét bài toán tối ưu hóa
+        \begin{equation*}
+            \begin{aligned}
+                &\min \dfrac{1}{2} \lVert x \rVert_2^2 \\ &\text{s.t. }Ax=y
+            \end{aligned}
+        \end{equation*}
+        \begin{enumerate}[wide, labelwidth=!, labelindent=0pt,label=\textbf{\arabic*}.]
+            \item Hãy chứng minh rằng bài toán tối ưu trên là một bài toán lồi.
+            \item Hãy xây dựng hàm Lagrange của bài toán.
+            \item Hãy trình bày điều kiện KKT của bài toán.
+            \item Từ điều kiện KKT hãy tìm nghiệm tối ưu của bài toán.
+        \end{enumerate}
+    \end{baitap}
+
+    \begin{loigiai}
+
+        Cho $A \in \mathbb{R}^{m\times n}$ và $rank(A)=m$. Xét bài toán tối ưu hóa
+        \begin{equation*}
+            \begin{aligned}
+                &\min \dfrac{1}{2} \lVert x \rVert_2^2 \\ &\text{s.t. }Ax=y
+            \end{aligned}
+        \end{equation*}
+        
+        \begin{enumerate} [wide, labelwidth=!, labelindent=0pt,label=\textbf{\arabic*}.]
+            \item Hãy chứng minh rằng bài toán tối ưu trên là một bài toán lồi.
+            
+            Ta chứng minh $f(x)=\dfrac{1}{2} \lVert x \rVert_2^2$ là một hàm lồi.
+            
+            Ta có $dom(f)=\mathbb{R}^n$ là tập lồi.
+            \begin{equation*}
+                f(x)=\dfrac{1}{2} \lVert x \rVert_2^2=\dfrac{1}{2}x^T x=\dfrac{1}{2}x^T I x
+            \end{equation*}
+
+            Ta tính gradient của $f(x)$ theo $x$:
+
+            \begin{equation*}
+                \nabla f(x)=\dfrac{1}{2} \Big\lbrack I + I^T \Big\rbrack x=\dfrac{1}{2}2Ix=x
+            \end{equation*}
+
+            Ta tính ma trận Hessian của $f(x)$ theo $x$:
+            \begin{equation*}
+                \nabla^2 f(x)=I
+            \end{equation*}
+
+            Ta xét:
+
+            \begin{equation*}
+                p^T \nabla^2 f(x) p=p^T I p = p^T p \geq 0 \forall p \in \mathbb{R}^n
+            \end{equation*}
+
+            nên:
+
+            \begin{equation*}
+                \nabla^2 f(x) \succeq 0 \forall x \in \mathbb{R}^n
+            \end{equation*}
+
+            Vì $dom(f)$ là tập lồi và $\nabla^2 f(x) \succeq 0$ nên $f(x)=\dfrac{1}{2} \lVert x \rVert_2^2$ là một hàm lồi.
+            Bài toán tối ưu hóa trên có $f(x)$ là hàm lồi, không có ràng buộc bất đẳng thức và ràng buộc đẳng thức $Ax=y$ là hàm affine.
+            Vì vậy bài toán tối ưu trên là một bài toán lồi.
+
+            \item Hãy xây dựng hàm Lagrange của bài toán.
+            
+            Ta xét bài toán tối ưu dạng tổng quát:
+
+            \begin{equation*}
+                \begin{aligned}
+                    & \min_x f(x) \\
+                     \text{s.t } & h_i(x) \leq 0, i = 1, \dots, k \\
+                    & l_j(x) = 0, j = 1, \dots, l.
+                \end{aligned}
+            \end{equation*}
+            Hàm Lagrange của bài toán tối ưu được định nghĩa là:
+
+            \begin{equation*}
+                L(x, u, v) = f(x) + \sum_{i=1}^k u_i h_i(x) + \sum_{j=1}^l v_j l_j (x)
+            \end{equation*}
+            với các biến mới $u \in \mathbb{R}^k$ và $v \in \mathbb{R}^l$ và ràng buộc $u \geq 0$.
+
+            Đối với bài toán tối ưu ở đề bài chỉ có ràng buộc đẳng thức mà không có ràng buộc bất đẳng thức nên hàm Lagrange của bài toán tối ưu ở đề bài là:
+
+            \begin{equation*}
+                L(x, v)=f(x) + v^T\Big \lbrack Ax - y \Big \rbrack=\dfrac{1}{2}\lVert x \rVert_2^2 + v^T \Big \lbrack Ax - y \Big \rbrack \text{ (do không có ràng buộc bất đẳng thức) } v \in \mathbb{R}^m
+            \end{equation*}
+
+            \item Hãy trình bày điều kiện KKT của bài toán.
+            
+            Ta xét bài toán tối ưu dạng tổng quát:
+
+            \begin{equation*}
+                \begin{aligned}
+                    & \min_x f(x) \\
+                     \text{s.t } & h_i(x) \leq 0, i = 1, \dots, k \\
+                    & l_j(x) = 0, j = 1, \dots, l.
+                \end{aligned}
+            \end{equation*}
+
+            Điều kiện Karush - Kuhn - Tucker (KKT) của bài toán tối ưu này là:
+
+            \begin{equation*}
+                \begin{cases}
+                    0 \in \partial \Bigg( f(x) + \displaystyle\sum_{i=1}^k u_i h_i(x) + \displaystyle\sum_{j=1}^l v_j l_j(x) \Bigg) \\
+                    u_i h_i(x) = 0 \thickspace \forall \thickspace i = 1, \dots, k \\
+                    h_i(x) \leq 0, l_j(x) = 0 \thickspace \forall \thickspace i=1, \dots, k, j=1, \dots, l \\
+                    u_i \geq 0 \thickspace \forall i = 1, \dots, k
+                \end{cases}
+            \end{equation*}
+
+            Đối với bài toán tối ưu ở đề bài chỉ có ràng buộc đẳng thức mà không có ràng buộc bất đẳng thức nên điều kiện KKT của bài toán tối ưu ở đề bài là:
+
+            \begin{equation*}
+                \begin{aligned}
+                &\begin{cases}
+                    0 \in \partial \Big ( f(x) + v^T\Big \lbrack Ax - y \Big \rbrack \Big) \\ Ax - y = 0
+                \end{cases}\\
+                \Leftrightarrow & \begin{cases} 0 \in \partial \Big( \dfrac{1}{2} \lVert x \rVert_2^2 + v^T\Big \lbrack Ax - y \Big \rbrack \Big) \\ Ax - y = 0 \end{cases}
+                \end{aligned}
+            \end{equation*}
+        \end{enumerate}
+    \end{loigiai}
+
+    \newpage
+    \printbibliography[title={TÀI LIỆU THAM KHẢO}]
+\end{document}
