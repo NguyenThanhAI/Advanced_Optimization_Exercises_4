@@ -472,7 +472,7 @@
             \begin{equation*}
                 \Rightarrow \begin{cases} x_1=\dfrac{-2\dfrac{\sqrt{13}}{4} - 3}{-2\dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13} + 6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{-\dfrac{\sqrt{13}}{4}}=\dfrac{4}{\sqrt{13}} \\ \lambda = -\dfrac{\sqrt{13}}{4} \end{cases}
             \end{equation*}
-            Ta kiểm tra ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ tại các giá trị $(x_1, x_2, \lambda)$ đã được tính ở trên.
+            Ta kiểm tra ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ theo $x_1, x_2$ tại các giá trị $(x_1, x_2, \lambda)$ đã được tính ở trên.
 
             \begin{equation*}
                 \begin{aligned}
@@ -494,7 +494,7 @@
                 \Rightarrow \begin{cases} x_1 = \dfrac{2 \dfrac{\sqrt{13}}{4}-3}{2 \dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{\dfrac{\sqrt{13}}{4}}=-\dfrac{4}{\sqrt{13}} \\ \lambda = \dfrac{\sqrt{13}}{4} \end{cases}
             \end{equation*}
 
-            Ta kiểm tra ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ tại các giá trị $(x_1, x_2, \lambda)$ đã được tính ở trên.
+            Ta kiểm tra ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ theo $x_1, x_2$ tại các giá trị $(x_1, x_2, \lambda)$ đã được tính ở trên.
 
             \begin{equation*}
                 \begin{aligned}
@@ -526,6 +526,127 @@
                 \end{aligned}
             \end{equation*} 
         \end{itemize}
+        \textbf{Cách 2:} Sử dụng điều kiện KKT:
+
+        Ta có hàm Lagrange tương ứng với bài toán tối ưu:
+
+        \begin{equation*}
+            L(x_1, x_2, v) = 3 x_1 + 2 x_2 + v(x_1^2 - 2x_1 + x_2^2 - 3)
+        \end{equation*}
+
+        Ta xét điều kiện KKT:
+
+        \begin{equation*}
+            \begin{aligned}
+            &\begin{cases} 0 \in \partial L(x_1, x_2, v) \\ x_1^2 - 2x_1 + x_2^2 - 3 = 0 \end{cases} \\
+            \Rightarrow &\begin{cases} 0 \in \partial \Big ( 3 x_1 + 2 x_2 + v(x_1^2 - 2x_1 + x_2^2 - 3) \Big) \\ x_1^2 - 2x_1 + x_2^2 - 3 = 0  \end{cases}
+            \end{aligned}
+        \end{equation*}
+
+        Ta chứng minh hàm $L(x_1, x_2, v)$ không là hàm lồi đối với $x_1, x_2$
+
+        Ta xét ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ theo $x_1, x_2$:
+
+        \begin{equation*}
+            \begin{aligned}
+                \nabla^2 L &= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} \\
+                &= \begin{pmatrix} 2v & 0 \\ 0 & 2v \end{pmatrix} \\
+            \end{aligned}
+        \end{equation*}
+
+        Để hàm $L(x_1, x_2, v)$ là một hàm lồi theo $x_1, x_2$ thì $\nabla^2 L \succeq 0 \thickspace \forall \thickspace v \in \mathbb{R}$. 
+        Nhưng với $v=-\dfrac{1}{2}$ thì:
+
+        \begin{equation*}
+            \nabla^2 L = \begin{pmatrix}
+                -1 & 0 \\ 0 & -1
+            \end{pmatrix}
+        \end{equation*}
+
+        Với $p=\begin{pmatrix}
+            p_1 \\ p_2
+        \end{pmatrix}$:
+
+        \begin{equation*}
+            p^T \nabla^2 L p = -(p_1^2 + p_2^2) < 0 \thickspace \forall \thickspace p \in \mathbb{R}^2 \backslash \lbrace 0 \rbrace
+        \end{equation*}
+
+        Tại $v=-\dfrac{1}{2}$, ma trận Hessian $\nabla^2 L \prec 0$. Vì vậy hàm $L(x_1, x_2, v)$ không là một hàm lồi theo $x_1, x_2$
+
+        Ta nhận thấy hàm $L(x_1, x_2, v)$ khả vi nhưng là hàm không lồi vì vậy ta không thể tính dưới vi phân $\partial L(x_1, x_2, v)$ bằng công thức:
+
+        \begin{equation*}
+            \partial L = \Bigg\lbrace \begin{pmatrix} \dfrac{\partial L(x_1, x_2, v)}{\partial x_1}, & \dfrac{\partial L(x_1, x_2, v)}{\partial x_2} \end{pmatrix}^T \Bigg\rbrace
+        \end{equation*}
+
+        Mặt khác, ta thấy hàm $3x_1 + 2x_2$ vừa là hàm lồi vừa là hàm lõm nên dưới vi phân của hàm này chỉ gồm một phần tử:
+
+        \begin{equation*}
+            \partial \Big( 3x_1 + 2 x_2 \Big) = \Big\lbrace \begin{pmatrix}
+                3 \\ 2
+            \end{pmatrix} \Big\rbrace
+        \end{equation*}
+
+        Nhưng với hàm $x_1^2 - 2x_1 + x_2^2 - 3=(x_1 - 1)^2 + x_2^2 - 4$ có dạng là một đường tròn
+
+
+        \textbf{Cách 3:} Sử dụng biến đổi tọa độ:
+
+        Ta biến đổi ràng buộc đẳng thức về dạng:
+
+        \begin{equation*}
+            \begin{aligned}
+            &x_1^2 - 2x_1 + x_2^2 = 3 \\
+            \Leftrightarrow & (x_1 - 1)^2 + x_2^2 = 4
+            \end{aligned}
+        \end{equation*}
+
+        Ta nhận thấy ràng buộc đẳng thức có dạng là một đường tròn (trên không gian hai chiều) hoặc một mặt trụ (trên không gian ba chiều) tâm tại $(1, 0)$ và bán kính là $2$.
+
+        Ta đặt:
+        \begin{equation*}
+            \begin{cases}
+                x_1 = 1 + 2 \cos \varphi \\
+                x_2 = 2 \sin \varphi \\
+                0 \leq \varphi \leq 2 \pi
+            \end{cases}
+        \end{equation*}
+
+        Hàm mục tiêu $f(x)=f(x_1, x_2)$ được viết lại dưới dạng:
+
+        \begin{equation*}
+            \begin{aligned}
+            f(\varphi) &= 3(1 + 2\cos \varphi) + 2.2 \sin \varphi \\
+            & = 3 + 6 \cos \varphi + 4 \sin \varphi
+            \end{aligned}
+        \end{equation*}
+
+        Bây giờ bài toán tối ưu trở thành:
+
+        \begin{equation*}
+            \begin{aligned}
+                &\min 3 + 6 \cos \varphi + 4 \sin \varphi \\
+                &\text{s.t. } 0 \leq \varphi \leq 2\pi
+            \end{aligned}
+        \end{equation*}
+
+        Ta xét:
+
+        \begin{equation*}
+            \dfrac{d f(\varphi)}{d \varphi}=-6 \sin \varphi + 4 \cos \varphi=0
+        \end{equation*}
+
+        Với $\cos \varphi = 0 \Rightarrow \sin \varphi = \pm 1$, phương trình $\dfrac{d f(\varphi)}{d \varphi}=0$ trở thành $\mp 6 = 0$ (vô lý).
+        Vậy $\varphi$ tương ứng với $\cos \varphi$ không là nghiệm của phương trình $\dfrac{d f(\varphi)}{d \varphi}=0$.
+
+        Ta chia cả hai vế của phương trình cho $\cos \varphi$:
+
+        \begin{equation*}
+            \Rightarrow \tan \varphi = \dfrac{2}{3}
+        \end{equation*}
+
+        Sử dụng hệ thức $\dfrac{1}{\cos^2 \varphi}=\tan^2 \varphi + 1$
+
     \end{loigiai}
 
     \newpage
