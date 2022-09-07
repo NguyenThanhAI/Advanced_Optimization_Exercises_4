@@ -327,6 +327,93 @@
                 \Leftrightarrow & \begin{cases} 0 \in \partial \Big( \dfrac{1}{2} \lVert x \rVert_2^2 + v^T\Big \lbrack Ax - y \Big \rbrack \Big) \\ Ax - y = 0 \end{cases}
                 \end{aligned}
             \end{equation*}
+
+            Ta chứng minh $f(x) + v^T\Big \lbrack Ax - y \Big \rbrack$ là hàm lồi.
+
+            Ta xét hàm số:
+
+            \begin{equation*}
+                \begin{aligned}
+                    g(x) &= f(x) + v^T\Big \lbrack Ax - y \Big \rbrack \\
+                    &=\dfrac{1}{2} \lVert x \rVert_2^2 + v^T\Big \lbrack Ax - y \Big \rbrack
+                \end{aligned}
+            \end{equation*}
+
+            Ta có $dom(g)= \mathbb{R}^n$ là tập lồi.
+
+            \begin{equation*}
+                \begin{aligned}
+                    g(x) &= \dfrac{1}{2} \lVert x \rVert_2^2 + v^T\Big \lbrack Ax - y \Big \rbrack \\
+                    &=\dfrac{1}{2}x^T x + v^T\Big \lbrack Ax - y \Big \rbrack \\
+                    &= \dfrac{1}{2}x^T I x + v^T\Big \lbrack Ax - y \Big \rbrack
+                \end{aligned}
+            \end{equation*}
+            Ta tính gradient của $g(x)$ theo $x$:
+            \begin{equation*}
+                \nabla g(x) = \dfrac{1}{2} \Big \lbrack I + I^T \Big \rbrack x + A^T v = \dfrac{1}{2}2I x + A^T x = x + A^T v
+            \end{equation*}
+            Ta tính ma trận Hessian của $g(x)$ theo $x$:
+
+            \begin{equation*}
+                \nabla^2 g(x) = I
+            \end{equation*}
+
+            Ta xét:
+
+            \begin{equation*}
+                p^T \nabla^2 g(x) p = p^T I p = p^T p \geq 0 \thickspace \forall \thickspace p \in \mathbb{R}^n
+            \end{equation*}
+
+            nên:
+
+            \begin{equation*}
+                \nabla^2 g(x) \succeq 0 \thickspace \forall \thickspace x \in \mathbb{R}^n
+            \end{equation*}
+
+            Vì $dom(g)=\mathbb{R}^n$ và $\nabla^2 g(x) \succeq 0$ nên $g(x) = \dfrac{1}{2} \lVert x \rVert_2^2 + v^T\Big \lbrack Ax - y \Big \rbrack$ là hàm lồi.
+
+            Ta nhận thấy $g(x)$ là một hàm khả vi với mọi $x \in \mathbb{R}^n$ và $g(x)$ là một hàm lồi nên ta có thể tính dưới vi phân $\partial g(x)$:
+
+            \begin{equation*}
+                \begin{aligned}
+                    \partial g(x) &= \lbrace \nabla g(x) \rbrace \\
+                    &= \lbrace x + A^T v \rbrace
+                \end{aligned}
+            \end{equation*}
+
+            Để $0 \in \partial g(x) \Rightarrow \nabla g(x) = 0 \Rightarrow x + A^T v = 0$.
+            Ta viết lại điều kiện KKT:
+
+            \begin{equation*}
+                \begin{cases} x + A^Tv=0 \\ Ax - y = 0 \end{cases}
+            \end{equation*}
+
+            \item Từ điều kiện KKT hãy tìm nghiệm tối ưu của bài toán.
+            
+            Các điểm $x, v$ thỏa mãn điều kiện KKT chính là nghiệm $x^*$ của bài toán tối ưu gốc và $v^*$ là nghiệm của bài toán đối ngẫu.
+
+            \begin{equation*}
+                \begin{cases} x + A^Tv=0 \\ Ax - y = 0 \end{cases} 
+                \Leftrightarrow \begin{cases} x = -A^T v \\ Ax = y \end{cases}
+                \Leftrightarrow \begin{cases} x = -A^T v \\ - A A^T v =y \end{cases}
+            \end{equation*}
+
+            Ta chứng minh ma trận $AA^T$ khả nghịch. Ta xét hệ phương trình:
+
+            \begin{equation*}
+                \begin{aligned}
+                    A A^T z = 0 \Rightarrow z^T A A^T z = 0 \Leftrightarrow (A^T z)^T (A^T z)=0 \Leftrightarrow \lVert A^T z \rVert_2^2 = 0
+                \end{aligned}
+            \end{equation*}
+
+            Do $rank(A)=m$ nên các cột của ma trận $A^T$ (các hàng của ma trận $A$) độc lập tuyến tính vậy để $A^T z = 0 \Leftrightarrow z = 0$. Vậy $AA^Tz=0 \Leftrightarrow z =0$ nên các cột của ma trận $AA^T$ độc lập tuyến tính, ta suy ra $A A^T$ khả nghịch.
+
+            \begin{equation*}
+                \Rightarrow \begin{cases} x = -A^T  v \\ v = - (A A^T)^{-1}y \end{cases} \Leftrightarrow \begin{cases} x = A^T  (A A^T)^{-1}y \\ v = - (A A^T)^{-1}y \end{cases}
+            \end{equation*}
+
+            Như vậy $x^* = A^T (A A^T)^{-1}y$ là nghiệm của bài toán tối ưu.
+            
         \end{enumerate}
     \end{loigiai}
 
