@@ -417,6 +417,117 @@
         \end{enumerate}
     \end{loigiai}
 
+    \begin{baitap}
+        Hãy giải bài toán tối ưu hóa sau sử dụng ít nhất 2 cách khác nhau
+
+        \begin{equation*}
+            \begin{aligned}
+                &\min 3 x_1 + 2x_2 \\ &\text{s.t. }x_1^2 - 2 x_1 + x_2^2 = 3
+            \end{aligned}
+        \end{equation*}
+    \end{baitap}
+
+    \begin{loigiai}
+        
+        Ta đặt $f(x)=f(x_1, x_2) = 3x_1 + 2x_2$
+
+        \textbf{Cách 1:} Sử dụng phương pháp nhân tử Lagrange:
+
+        Ta xét hàm Lagrange của bài toán tối ưu hóa:
+
+        \begin{equation*}
+            L(x_1, x_2, \lambda) = 3x_1 + 2x_2 + \lambda ( x_1^2 - 2 x_1 + x_2^2 - 3)
+        \end{equation*}
+        Điều kiện cần bài toán tối ưu trên đạt cực trị là:
+
+        \begin{equation*}
+            \begin{cases} \dfrac{\partial L}{\partial x_1}=0 \\ \dfrac{\partial L}{\partial x_2}=0 \\ \dfrac{\partial L}{\partial \lambda}=0 \end{cases}
+        \end{equation*}
+
+        Ta giải hệ phương trình trên để tìm các điểm đạt điều kiện cần trở thành cực trị:
+
+        \begin{equation*}
+            \begin{cases} \dfrac{\partial L}{\partial x_1}=0 \\ \dfrac{\partial L}{\partial x_2}=0 \\ \dfrac{\partial L}{\partial \lambda}=0 \end{cases}
+            \Leftrightarrow \begin{cases} \dfrac{\partial L}{\partial x_1}=3 + 2\lambda x_1 - 2\lambda=0 \\ \dfrac{\partial L}{\partial x_2}=2 + 2\lambda x_2=0 \\ \dfrac{\partial L}{\partial \lambda}=x_1^2 - 2 x_1 + x_2^2 - 3=0 \end{cases}
+        \end{equation*}
+
+        Ta nhận thấy khi $\lambda = 0$ thì phương trình thứ nhất của hệ phương trình trên trở thành $3=0$ (vô lý) và phương trình thứ hai trở thành $2=0$ (vô lý).
+        Vì vậy $\lambda = 0$ không thể là nghiệm. Biểu diễn lại $x_1, x_2$ theo $\lambda$ ta được:
+
+        \begin{equation*}
+            \begin{cases} x_1 = \dfrac{2\lambda - 3}{2\lambda} \\ x_2 = - \dfrac{1}{\lambda} \\ x_1^2 - 2 x_1 + x_2^2 - 3=0 \end{cases}
+        \end{equation*}
+
+        Phương trình thứ ba của hệ phương trình trên trở thành:
+
+        \begin{equation*}
+            \begin{aligned}
+                &\dfrac{(2\lambda - 3)^2}{(2\lambda)^2}-2 \dfrac{2\lambda -3}{2\lambda} + \dfrac{1}{\lambda^2}-3=0 \\
+                \Leftrightarrow &\dfrac{4\lambda^2 - 12\lambda + 9 - 8\lambda^2 + 12\lambda + 4 - 12\lambda^2}{4\lambda^2}=0 \\ \Leftrightarrow &-16\lambda^2 + 13=0 \\
+                \Leftrightarrow &\left [\begin{array}{l} \lambda = - \dfrac{\sqrt{13}}{4} \\ \lambda = \dfrac{\sqrt{13}}{4} \end{array} \right.
+            \end{aligned}
+        \end{equation*}
+        \begin{itemize}
+            \item Với $\lambda = - \dfrac{\sqrt{13}}{4}$:
+            \begin{equation*}
+                \Rightarrow \begin{cases} x_1=\dfrac{-2\dfrac{\sqrt{13}}{4} - 3}{-2\dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13} + 6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{-\dfrac{\sqrt{13}}{4}}=\dfrac{4}{\sqrt{13}} \\ \lambda = -\dfrac{\sqrt{13}}{4} \end{cases}
+            \end{equation*}
+            Ta kiểm tra ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ tại các giá trị $(x_1, x_2, \lambda)$ đã được tính ở trên.
+
+            \begin{equation*}
+                \begin{aligned}
+                    \nabla^2 L \Big( \lambda = - \dfrac{\sqrt{13}}{4} \Big) &= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} \\
+                    &= \begin{pmatrix} 2\lambda & 0 \\ 0 & 2\lambda \end{pmatrix} \\
+                    &= \begin{pmatrix} -\dfrac{\sqrt{13}}{2} & 0 \\ 0 & -\dfrac{\sqrt{13}}{2} \end{pmatrix}
+                \end{aligned}
+            \end{equation*}
+
+            Ta nhận thấy với $p=\begin{pmatrix} p_1 \\ p_2 \end{pmatrix}$:
+
+            \begin{equation*}
+                p^T \nabla^2 L \Big( \lambda = - \dfrac{\sqrt{13}}{4} \Big) p=- \dfrac{\sqrt{13}}{2} (p_1^2 + p_2^2) < 0 \thickspace \forall \thickspace p \in \mathbb{R}^2 \backslash \lbrace 0 \rbrace
+            \end{equation*}
+
+            Vì vậy $\nabla^2 L \Big( \lambda = - \dfrac{\sqrt{13}}{4} \Big)$ là ma trận xác định âm. Vậy các nghiệm $(x_1, x_2)$ tương ứng với $\lambda = -\dfrac{\sqrt{13}}{4}$ đã được tính ở trên là một cực đại và không phải là đáp án của bài toán.
+            \item Với $\lambda =  \dfrac{\sqrt{13}}{4}$:
+            \begin{equation*}
+                \Rightarrow \begin{cases} x_1 = \dfrac{2 \dfrac{\sqrt{13}}{4}-3}{2 \dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{\dfrac{\sqrt{13}}{4}}=-\dfrac{4}{\sqrt{13}} \\ \lambda = \dfrac{\sqrt{13}}{4} \end{cases}
+            \end{equation*}
+
+            Ta kiểm tra ma trận Hessian $\nabla^2 L= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} $ tại các giá trị $(x_1, x_2, \lambda)$ đã được tính ở trên.
+
+            \begin{equation*}
+                \begin{aligned}
+                    \nabla^2 L \Big( \lambda = \dfrac{\sqrt{13}}{4} \Big) &= \begin{pmatrix} \dfrac{\partial^2 L}{\partial x_1^2} & \dfrac{\partial^2 L}{\partial x_1 \partial x_2} \\ \dfrac{\partial^2 L}{\partial x_2 \partial x_1} & \dfrac{\partial^2 L}{\partial x_2^2} \end{pmatrix} \\
+                    &= \begin{pmatrix} 2\lambda & 0 \\ 0 & 2\lambda \end{pmatrix} \\
+                    &= \begin{pmatrix} \dfrac{\sqrt{13}}{2} & 0 \\ 0 & \dfrac{\sqrt{13}}{2} \end{pmatrix}
+                \end{aligned}
+            \end{equation*}
+
+            Ta nhận thấy với $p=\begin{pmatrix} p_1 \\ p_2 \end{pmatrix}$:
+            
+            \begin{equation*}
+                p^T \nabla^2 L \Big( \lambda = \dfrac{\sqrt{13}}{4} \Big) p=\dfrac{\sqrt{13}}{2} (p_1^2 + p_2^2) > 0 \thickspace \forall \thickspace p \in \mathbb{R}^2 \backslash \lbrace 0 \rbrace
+            \end{equation*}
+            Vì vậy $\nabla^2 L \Big( \lambda = \dfrac{\sqrt{13}}{4} \Big)$ là ma trận xác định dương. Vậy các nghiệm $(x_1, x_2)$ tương ứng với $\lambda = \dfrac{\sqrt{13}}{4}$ đã được tính ở trên là một cực tiểu và đây chính là nghiệm của bài toán tối ưu (chỉ có duy nhất một nghiệm cực tiểu).
+
+            Vậy nghiệm tối ưu của bài toán tối ưu là:
+
+            \begin{equation*}
+                \begin{cases} x_1^* = \dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2^* = -\dfrac{4}{\sqrt{13}} \end{cases}
+            \end{equation*}
+            ứng với $\lambda^* = \dfrac{\sqrt{13}}{4}$
+
+            Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 =3$ là:
+            \begin{equation*}
+                \begin{aligned}
+                f(x_1^*, x_2^*)&=3x_1^* + 2x_2^* \\&= 3 \dfrac{\sqrt{13}-6}{\sqrt{13}} - 2 \dfrac{4}{\sqrt{13}}\\
+                &= 3 - 2\sqrt{13}
+                \end{aligned}
+            \end{equation*} 
+        \end{itemize}
+    \end{loigiai}
+
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
 \end{document}
