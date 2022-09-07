@@ -511,7 +511,7 @@
             \end{equation*}
             Vì vậy $\nabla^2 L \Big( \lambda = \dfrac{\sqrt{13}}{4} \Big)$ là ma trận xác định dương. Vậy các nghiệm $(x_1, x_2)$ tương ứng với $\lambda = \dfrac{\sqrt{13}}{4}$ đã được tính ở trên là một cực tiểu và đây chính là nghiệm của bài toán tối ưu (chỉ có duy nhất một nghiệm cực tiểu).
 
-            Vậy nghiệm tối ưu của bài toán tối ưu là:
+            Vậy nghiệm của bài toán tối ưu là:
 
             \begin{equation*}
                 \begin{cases} x_1^* = \dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2^* = -\dfrac{4}{\sqrt{13}} \end{cases}
@@ -645,8 +645,136 @@
             \Rightarrow \tan \varphi = \dfrac{2}{3}
         \end{equation*}
 
-        Sử dụng hệ thức $\dfrac{1}{\cos^2 \varphi}=\tan^2 \varphi + 1$
+        Sử dụng hệ thức $\dfrac{1}{\cos^2 \varphi}=\tan^2 \varphi + 1$:
 
+        \begin{equation*}
+            \Rightarrow \cos^2 \varphi = \dfrac{1}{\tan^2 \varphi + 1}=\dfrac{1}{\dfrac{4}{9} + 1}=\dfrac{9}{13}
+        \end{equation*}
+
+        Sử dụng hệ thức $\sin^2 \varphi + \cos^2 \varphi = 1$:
+
+        \begin{equation*}
+            \Rightarrow \sin^2 \varphi = 1 - \cos^2 \varphi = 1 - \dfrac{9}{13}=\dfrac{4}{13}
+        \end{equation*}
+
+        Từ đây ta suy ra:
+
+        \begin{equation*}
+            \left [\begin{array}{l} \begin{cases} \sin \varphi = \dfrac{2}{\sqrt{13}} \\ \cos \varphi = \dfrac{3}{\sqrt{13}} \end{cases} \\ \begin{cases} \sin \varphi = -\dfrac{2}{\sqrt{13}} \\ \cos \varphi = -\dfrac{3}{\sqrt{13}} \end{cases} \end{array} \right.
+        \end{equation*}
+
+        \begin{itemize}
+            \item Với $\begin{cases} \sin \varphi = \dfrac{2}{\sqrt{13}} \\ \cos \varphi = \dfrac{3}{\sqrt{13}} \end{cases}$:
+            
+            Ta xét đạo hàm bậc hai:
+
+            \begin{equation*}
+                \dfrac{d^2 f(\varphi)}{d \varphi^2} = - 6 \cos \varphi - 4 \sin \varphi
+            \end{equation*}
+
+            Tại $\begin{cases} \sin \varphi = \dfrac{2}{\sqrt{13}} \\ \cos \varphi = \dfrac{3}{\sqrt{13}} \end{cases}$:
+
+            \begin{equation*}
+                \dfrac{d^2 f(\varphi)}{d \varphi^2} = -6 \dfrac{3}{\sqrt{13}} - 4 \dfrac{2}{\sqrt{13}} = -\dfrac{26}{\sqrt{13}}=-2\sqrt{13} < 0
+            \end{equation*}
+
+            Vì vậy, tại $\varphi$ sao cho $\begin{cases} \sin \varphi = \dfrac{2}{\sqrt{13}} \\ \cos \varphi = \dfrac{3}{\sqrt{13}} \end{cases}$, $f(\varphi)$ đạt cực đại nên nghiệm $\varphi$ này không là nghiệm của bài toán.
+
+            \item Với $\begin{cases} \sin \varphi = -\dfrac{2}{\sqrt{13}} \\ \cos \varphi = -\dfrac{3}{\sqrt{13}} \end{cases}$:
+            Ta xét đạo hàm cấp 2:
+            
+            \begin{equation*}
+                \dfrac{d^2 f(\varphi)}{d \varphi^2} = - 6 \cos \varphi - 4 \sin \varphi
+            \end{equation*}
+
+            Tại $\begin{cases} \sin \varphi = -\dfrac{2}{\sqrt{13}} \\ \cos \varphi = -\dfrac{3}{\sqrt{13}} \end{cases}$:
+
+            \begin{equation*}
+                \dfrac{d^2 f(\varphi)}{d \varphi^2} = -6 \dfrac{-3}{\sqrt{13}} - 4 \dfrac{-2}{\sqrt{13}} = \dfrac{26}{\sqrt{13}}=2\sqrt{13} > 0
+            \end{equation*}
+
+            Vì vậy, tại $\varphi$ sao cho $\begin{cases} \sin \varphi = -\dfrac{2}{\sqrt{13}} \\ \cos \varphi = -\dfrac{3}{\sqrt{13}} \end{cases}$, $f(\varphi)$ đạt cực tiểu và đây chính là nghiệm của bài toán tối ưu.
+
+            Tại $\varphi^*$ sao cho $\begin{cases} \sin \varphi^* = -\dfrac{2}{\sqrt{13}} \\ \cos \varphi^* = -\dfrac{3}{\sqrt{13}} \end{cases}$, nghiệm của bài toán tối ưu là:
+
+            \begin{equation*}
+                \begin{cases}
+                    x_1^* = 1 + 2 \cos \varphi^* = 1 + 2 \dfrac{-3}{\sqrt{13}} = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\
+                    x_2^* = 2 \sin \varphi^* = 2 \dfrac{-2}{\sqrt{13}} = -\dfrac{4}{\sqrt{13}}
+                \end{cases}
+            \end{equation*}
+        \end{itemize}
+        Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 =3$ là:
+            \begin{equation*}
+                \begin{aligned}
+                f(x_1^*, x_2^*)&=3x_1^* + 2x_2^* \\&= 3 \dfrac{\sqrt{13}-6}{\sqrt{13}} - 2 \dfrac{4}{\sqrt{13}}\\
+                &= 3 - 2\sqrt{13}
+                \end{aligned}
+            \end{equation*}
+        đạt tại:
+
+        \begin{equation*}
+            x_1^* = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\
+            x_2^* = -\dfrac{4}{\sqrt{13}}
+        \end{equation*}
+
+        \textbf{Cách 4:} Sử dụng phương pháp thế và tam thức bậc hai:
+
+        Ta đặt $z = f(x) = f(x_1, x_2) = 3 x_1 + 2 x_2$
+        Bài toán tối ưu ban đầu trở thành:
+
+        \begin{equation*}
+            \begin{aligned}
+                &\min z \\ &\text{s.t. }x_1^2 - 2 x_1 + x_2^2 = 3
+            \end{aligned}
+        \end{equation*}
+
+        Thay $x_2 = \dfrac{z - 3 x_1}{2}$ và thế vào ràng buộc đẳng thức ta được:
+
+        \begin{equation*}
+            \begin{aligned}
+                &x_1^2 - 2x_1 + \dfrac{(z - 3 x_1)^2}{2^2}=3 \\
+                \Leftrightarrow & 4 x_1^2 - 8 x_1 + (z - 3 x_1)^2 = 12 \\
+                \Leftrightarrow & 4 x_1^2 - 8 x_1 + (z^2 - 6z x_1 + 9 x_1^2) = 12 \\
+                \Leftrightarrow & 13 x_1^2 - 2(3z + 4)x_1 + z^2 - 12 = 0
+            \end{aligned}
+        \end{equation*}
+
+        Ta tìm $z$ sao cho phương trình bậc 2 trên có nghiệm:
+
+        \begin{equation*}
+            \begin{aligned}
+            &\Delta^{\prime} \geq 0 \\
+            \Leftrightarrow & (3z + 4)^2 - 13(z^2 - 12) \geq 0 \\
+            \Leftrightarrow & 9z^2 + 24z + 16 - 13 z^2 + 156 \geq 0 \\
+            \Leftrightarrow & -4 z^2 + 24z + 172 \geq 0
+            \end{aligned}
+        \end{equation*}
+
+        Phương trình $-4 z^2 + 24z + 172 = 0$ có hai nghiệm:
+
+        \begin{equation*}
+            \left [\begin{array}{l} z = 3 - 2 \sqrt{13} \\ z = 3 + 2 \sqrt{13} \end{array} \right.
+        \end{equation*}
+
+        Để $-4 z^2 + 24z + 172 \geq 0 \Rightarrow z \in \lbrack 3 - 2\sqrt{13}; 3 + 2 \sqrt{13} \rbrack$.
+        Vậy $\min z = 3 - 2 \sqrt{13}$. Khi $z = 2 - \sqrt{13} \Rightarrow \Delta^{\prime} = 0$.
+        Khi $\Delta^{\prime}=0$:
+
+        \begin{equation*}
+            \begin{aligned}
+                &\Rightarrow x_1^* = \dfrac{3z + 4}{13}=\dfrac{3 (3 - 2\sqrt{13}) + 4}{13}=\dfrac{13 - 6\sqrt{13}}{13}=\dfrac{\sqrt{13} - 6}{\sqrt{13}} \\
+                &\Rightarrow x_2^* = \dfrac{z - 3x_1^*}{2}=\dfrac{3 - 2\sqrt{13} - 3 \dfrac{\sqrt{13} - 6}{\sqrt{13}}}{2}=\dfrac{-26 + 18}{2\sqrt{13}}=-\dfrac{4}{\sqrt{13}}
+            \end{aligned}
+        \end{equation*}
+
+        Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 = 3$ là:
+
+        \begin{equation*}
+            f(x_1^*, x_2^*) = \min z = 3 - 2\sqrt{13}
+        \end{equation*}
+
+        đạt được khi $\begin{cases} x_1^* = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ x_2^* = - \dfrac{4}{\sqrt{13}} \end{cases}$
     \end{loigiai}
 
     \newpage
