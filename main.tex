@@ -876,7 +876,113 @@
 
         \textbf{Cách 6:} Sử dụng bất đẳng thức Cauchy - Schwarz:
 
+        Ta biến đổi ràng buộc đẳng thức về dạng:
+
+        \begin{equation*}
+            \begin{aligned}
+            &x_1^2 - 2x_1 + x_2^2 = 3 \\
+            \Leftrightarrow & (x_1 - 1)^2 + x_2^2 = 4
+            \end{aligned}
+        \end{equation*}
+
+        Sử dụng bất đẳng thức Cauchy - Schwarz:
+
+        \begin{equation*}
+            \begin{aligned}
+            &\Big ( 3(x_1 - 1) + 2x_2 \Big )^2 \leq (3^2 + 2^2)\Big ( (x_1 - 1)^2 + x_2^2 \Big) = 13\times4 = 52 \\
+            \Leftrightarrow & - 2\sqrt{13} \leq 3(x_1 - 1) + 2x_2 \leq 2 \sqrt{13} \\
+            \Leftrightarrow & - 2 \sqrt{13} \leq 3 x_1 + 2 x_2 - 3 \leq 2 \sqrt{13} \\
+            \Leftrightarrow & - 2 \sqrt{13} \leq f(x_1, x_2) - 3 \leq 2 \sqrt{13} \\
+            \Leftrightarrow & 3 - 2 \sqrt{13} \leq f(x_1, x_2) \leq 3 + 2 \sqrt{13}
+            \end{aligned}
+        \end{equation*}
+
+        Dấu "=" xảy ra khi và chỉ khi:
+
+        \begin{equation*}
+            \begin{aligned}
+                &\begin{cases}
+                    \dfrac{x_1 - 1}{3} = \dfrac{x_2}{2} \\
+                    (x_1 - 1)^2 + x_2^2 = 4
+                \end{cases} \\
+                \Leftrightarrow & \begin{cases}
+                    x_2 = \dfrac{2(x_1 - 1)}{3} \\
+                    (x_1 - 1)^2 + x_2^2 = 4
+                \end{cases} \\
+                \Leftrightarrow & \begin{cases}
+                    x_2 = \dfrac{2(x_1 - 1)}{3} \\
+                    (x_1 - 1)^2 + \dfrac{4}{9}(x_1 - 1)^2 = 4
+                \end{cases} \\
+                \Leftrightarrow & \begin{cases}
+                    x_2 = \dfrac{2(x_1 - 1)}{3} \\
+                    \dfrac{13}{9}(x_1 - 1)^2 = 4
+                \end{cases} \\
+                \Leftrightarrow & \left [\begin{array}{l} \begin{cases} x_1 = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ x_2 = -\dfrac{4}{\sqrt{13}} \end{cases} \\ \begin{cases} x_1 = \dfrac{\sqrt{13} + 6}{\sqrt{13}} \\ x_2 = \dfrac{4}{\sqrt{13}} \end{cases} \end{array} \right.
+            \end{aligned}
+        \end{equation*}
+
+        Ta nhận thấy $f(x_1=\dfrac{\sqrt{13} - 6}{\sqrt{13}}, x_2 = -\dfrac{4}{\sqrt{13}})=3 - 2\sqrt{13}$
+
+        Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 = 3$ là:
+
+        \begin{equation*}
+            f(x_1^*, x_2^*) = 3 - 2\sqrt{13}
+        \end{equation*}
+
+        đạt được khi:
+        \begin{equation*}
+            \begin{cases} 
+                x_1^* = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ 
+                x_2^* = - \dfrac{4}{\sqrt{13}} 
+            \end{cases}
+        \end{equation*}
+
+        \textbf{Cách 7:} Biến đổi và đánh giá trực tiếp hàm mục tiêu:
+
+        Ta đặt $z = f(x) = f(x_1, x_2) = 3 x_1 + 2 x_2$
+
+        Ta xét:
+
+        \begin{equation*}
+            \begin{aligned}
+            \dfrac{4}{\sqrt{13}} z &= \dfrac{4}{\sqrt{13}} (3 x_1 + 2 x_2 ) + 3 - 3 \\
+                                & = \dfrac{4}{\sqrt{13}} (3 x_1 + 2 x_2 ) + (x_1^2 - 2x_1 + x_2^2) - 3 \\
+                                & = \dfrac{12}{\sqrt{13}} x_1 + \dfrac{8}{\sqrt{13}} x_2 + (x_1^2 - 2x_1 + x_2^2) - 3 \\
+                                & = \Big ( x_1^2 + \dfrac{12}{\sqrt{13}} x_1 - 2 x_1 + \dfrac{36}{13} + 1 \Big) + \Big ( x_2^2 + \dfrac{8}{\sqrt{13}}x_2 + \dfrac{16}{13} \Big) + \dfrac{12}{\sqrt{13}} - 8 \\
+                                & = \Big ( x_1 + \dfrac{6}{\sqrt{13}} - 1 \Big)^2 + \Big( x_2 + \dfrac{4}{\sqrt{13}} \Big)^2 + \dfrac{12}{\sqrt{13}} - 8 \geq \dfrac{12}{\sqrt{13}} - 8 \\
+                        \Leftrightarrow z &\geq 3 - 2\sqrt{13}
+            \end{aligned}
+        \end{equation*}
     \end{loigiai}
+
+    Dấu "=" xảy ra khi và chỉ khi:
+
+    \begin{equation}
+        \begin{aligned}
+        &\begin{cases}
+            x_1 + \dfrac{6}{\sqrt{13}} - 1 = 0 \\ 
+            x_2 + \dfrac{4}{\sqrt{13}} = 0 
+        \end{cases} \\
+        \Leftrightarrow & \begin{cases}
+            x_1 = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ 
+            x_2 = - \dfrac{4}{\sqrt{13}} 
+        \end{cases}
+        \end{aligned}
+    \end{equation}
+
+    Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 = 3$ là:
+
+    \begin{equation*}
+        f(x_1^*, x_2^*) = 3 - 2\sqrt{13}
+    \end{equation*}
+
+    đạt được khi:
+    \begin{equation*}
+        \begin{cases} 
+            x_1^* = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ 
+            x_2^* = - \dfrac{4}{\sqrt{13}} 
+        \end{cases}
+    \end{equation*}
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
