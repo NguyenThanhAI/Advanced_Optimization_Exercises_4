@@ -871,7 +871,7 @@
         \begin{equation*}
             \begin{cases} 
                 x_1^* = a = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ 
-                x_2^* = a = - \dfrac{4}{\sqrt{13}} 
+                x_2^* = b = - \dfrac{4}{\sqrt{13}} 
             \end{cases}
         \end{equation*}
 
@@ -958,7 +958,7 @@
 
     Dấu "=" xảy ra khi và chỉ khi:
 
-    \begin{equation}
+    \begin{equation*}
         \begin{aligned}
         &\begin{cases}
             x_1 + \dfrac{6}{\sqrt{13}} - 1 = 0 \\ 
@@ -969,7 +969,7 @@
             x_2 = - \dfrac{4}{\sqrt{13}} 
         \end{cases}
         \end{aligned}
-    \end{equation}
+    \end{equation*}
 
     Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 = 3$ là:
 
@@ -1033,10 +1033,10 @@
             \Leftrightarrow & \begin{cases}
                 -1 \leq x_1 \leq 1 \\
                 13x_1^2 - 26 x_1 - 23 = 0
-            \end{cases}
+            \end{cases}\\
             \Leftrightarrow & \begin{cases}
                 -1 \leq x_1 \leq 1 \\
-                \left [ \begin{array}{l} x_1 = \dfrac{6 - \sqrt{13}}{\sqrt{13}} \\ x_1 = \dfrac{6 + \sqrt{13}}{\sqrt{13}} \text{ (Không thỏa mãn điều kiện } -1 \leq x_1 \leq 1 \text{ )} \end{array}\right.
+                \left [ \begin{array}{l} x_1 = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ x_1 = \dfrac{\sqrt{13} + 6}{\sqrt{13}} \text{ (Không thỏa mãn điều kiện } -1 \leq x_1 \leq 1 \text{ )} \end{array}\right.
             \end{cases}
         \end{aligned}
     \end{equation*}
@@ -1047,17 +1047,17 @@
         \tkzTabInit
         [lgt=3,espcl=5] % tùy chọn
         {$x_1$/1.2, $g^{\prime}(x_1)$/1, $g(x_1)$/2.5} % cột đầu tiên
-        {$-1$, $\dfrac{6 - \sqrt{13}}{\sqrt{13}}$, $3$} % hàng 1 cột 2
+        {$-1$, $\dfrac{\sqrt{13} - 6}{\sqrt{13}}$, $3$} % hàng 1 cột 2
         \tkzTabLine{,-,0,+,} % hàng 2 cột 2
         \tkzTabVar{+/ $-3$, -/ $3 - 2\sqrt{13}$ , +/ $9$} % hàng 3 cột 2
     \end{tikzpicture}
 
-    Vậy $g(x_1)$ với $-1 \leq x_1 \leq 3$ đạt giá trị nhỏ nhất tại $x_1 = \dfrac{6 - \sqrt{13}}{\sqrt{13}}$.
+    Vậy $g(x_1)$ với $-1 \leq x_1 \leq 3$ đạt giá trị nhỏ nhất tại $x_1 = \dfrac{\sqrt{13} - 6}{\sqrt{13}}$.
     Ta tính $x_2$:
 
-    \begin{equation}
-        x_2 = - \sqrt{3 + 2x_1 - x_1^2}= \sqrt{3 + 2 \dfrac{6 - \sqrt{13}}{\sqrt{13}} - \Big( \dfrac{6 - \sqrt{13}}{\sqrt{13}} \Big)^2} = -\dfrac{4}{\sqrt{13}}
-    \end{equation}
+    \begin{equation*}
+        x_2 = - \sqrt{3 + 2x_1 - x_1^2}= \sqrt{3 + 2 \dfrac{\sqrt{13} - 6}{\sqrt{13}} - \Big( \dfrac{\sqrt{13} - 6}{\sqrt{13}} \Big)^2} = -\dfrac{4}{\sqrt{13}}
+    \end{equation*}
 
     Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 = 3$ là:
 
