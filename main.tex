@@ -488,7 +488,7 @@
                 p^T \nabla^2 L \Big( \lambda = - \dfrac{\sqrt{13}}{4} \Big) p=- \dfrac{\sqrt{13}}{2} (p_1^2 + p_2^2) < 0 \thickspace \forall \thickspace p \in \mathbb{R}^2 \backslash \lbrace 0 \rbrace
             \end{equation*}
 
-            Vì vậy $\nabla^2 L \Big( \lambda = - \dfrac{\sqrt{13}}{4} \Big)$ là ma trận xác định âm. Vậy các nghiệm $(x_1, x_2)$ tương ứng với $\lambda = -\dfrac{\sqrt{13}}{4}$ đã được tính ở trên là một cực đại và không phải là đáp án của bài toán.
+            Vì vậy $\nabla^2 L \Big( \lambda = - \dfrac{\sqrt{13}}{4} \Big)$ là ma trận xác định âm. Vậy các nghiệm $(x_1, x_2)$ tương ứng với $\lambda = -\dfrac{\sqrt{13}}{4}$ đã được tính ở trên là một cực đại và không phải là nghiệm của bài toán.
             \item Với $\lambda =  \dfrac{\sqrt{13}}{4}$:
             \begin{equation*}
                 \Rightarrow \begin{cases} x_1 = \dfrac{2 \dfrac{\sqrt{13}}{4}-3}{2 \dfrac{\sqrt{13}}{4}}=\dfrac{\sqrt{13}-6}{\sqrt{13}} \\ x_2 = - \dfrac{1}{\dfrac{\sqrt{13}}{4}}=-\dfrac{4}{\sqrt{13}} \\ \lambda = \dfrac{\sqrt{13}}{4} \end{cases}
@@ -637,7 +637,7 @@
         \end{equation*}
 
         Với $\cos \varphi = 0 \Rightarrow \sin \varphi = \pm 1$, phương trình $\dfrac{d f(\varphi)}{d \varphi}=0$ trở thành $\mp 6 = 0$ (vô lý).
-        Vậy $\varphi$ tương ứng với $\cos \varphi$ không là nghiệm của phương trình $\dfrac{d f(\varphi)}{d \varphi}=0$.
+        Vậy $\varphi$ tương ứng với $\cos \varphi = 0$ không là nghiệm của phương trình $\dfrac{d f(\varphi)}{d \varphi}=0$.
 
         Ta chia cả hai vế của phương trình cho $\cos \varphi$:
 
@@ -780,8 +780,102 @@
         \begin{equation*}
             \begin{cases} 
                 x_1^* = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ 
-                x_2^* = - \dfrac{4}{\sqrt{13}} \end{cases}
-            \end{equation*}
+                x_2^* = - \dfrac{4}{\sqrt{13}} 
+            \end{cases}
+        \end{equation*}
+
+        \textbf{Cách 5:} Sử dụng phương pháp hình học:
+
+        Ta biến đổi ràng buộc đẳng thức về dạng:
+
+        \begin{equation*}
+            \begin{aligned}
+            &x_1^2 - 2x_1 + x_2^2 = 3 \\
+            \Leftrightarrow & (x_1 - 1)^2 + x_2^2 = 4
+            \end{aligned}
+        \end{equation*}
+
+        Trong mặt phẳng $Ox_1 x_2$, đây là phương trình đường tròn, đặt tâm tại $I(1, 0)$ và bán kính $R=2$:
+
+        Đường thẳng $3x_1 + 2x_2 = 0$, chia mặt phẳng $O x_1 x_2$ thành 2 miền:
+
+        \begin{equation*}
+            \mathcal{D}_I = \lbrace (x_1, x_2) \in \mathbb{R}^2: 3x_1 + 2x_2 \geq 0 \rbrace
+        \end{equation*}
+
+        \begin{equation*}
+            \mathcal{D}_{II} = \lbrace (x_1, x_2) \in \mathbb{R}^2: 3x_1 + 2x_2 < 0 \rbrace
+        \end{equation*}
+
+        Nghiệm tối ưu là điểm $H$ là giao giữa đường thẳng đi qua tâm $I$ vuông góc với đường thẳng $3x_1 + 2x_2 = 0$ và đường tròn $(x_1 - 1)^2 + x_2^2 = 4$ và $H \in \mathcal{D}_{II}$.
+
+        Gọi $H(a, b)$:
+
+        \begin{equation*}
+            \Rightarrow \overrightarrow{IH}=(a - 1, b)
+        \end{equation*}
+
+        Điều kiện để điểm $H$ là nghiệm tối ưu:
+
+        \begin{equation*}
+            \begin{aligned}
+            &\begin{cases}
+                \overrightarrow{IH} = k(3, 2) \\
+                \lVert IH \rVert = R = 2 \\
+                H \in \mathcal{D}_{II}
+            \end{cases} \\
+            \Leftrightarrow & \begin{cases}
+                \overrightarrow{IH} = k(3, 2) \\
+                \lVert IH \rVert = R = 2 \\
+                3a + 2b < 0
+            \end{cases} \\
+            \Leftrightarrow & \begin{cases}
+                (a - 1, b) = k(3, 2) \\
+                \sqrt{(a - 1)^2 + b^2} = 2 \\
+                3a + 2b < 0
+            \end{cases} \\
+            \Leftrightarrow & \begin{cases}
+                a - 1 = 3k \\
+                b = 2k \\
+                (a - 1)^2 + b^2 = 4 \\
+                3a + 2b < 0
+            \end{cases} \\
+            \Leftrightarrow & \begin{cases}
+                a - 1 = 3k \\
+                b = 2k \\
+                (3k)^2 + (2k)^2 = 4 \\
+                3a + 2b < 0
+            \end{cases} \\
+            \Leftrightarrow & \begin{cases}
+                a - 1 = 3k \\
+                b = 2k \\
+                k^2 = \dfrac{4}{13} \\
+                3a + 2b < 0
+            \end{cases} \\
+            \Leftrightarrow & \begin{cases}
+                a = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\
+                b = -\dfrac{4}{\sqrt{13}} \\ 
+                k = - \dfrac{2}{\sqrt{13}} (k=\dfrac{2}{\sqrt{13}} \text{ không thỏa mãn điều kiện } 3a + 2b < 0)
+            \end{cases}
+            \end{aligned}
+        \end{equation*}
+
+        Giá trị nhỏ nhất của hàm $f(x_1, x_2)$ với ràng buộc $x_1^2 - 2x_1 + x_2^2 = 3$ là:
+
+        \begin{equation*}
+            f(x_1^*, x_2^*) = 3 a + 2b = 3 \dfrac{\sqrt{13} - 6}{\sqrt{13}} - 2 \dfrac{4}{\sqrt{13}}  = 3 - 2\sqrt{13}
+        \end{equation*}
+
+        đạt được khi:
+        \begin{equation*}
+            \begin{cases} 
+                x_1^* = a = \dfrac{\sqrt{13} - 6}{\sqrt{13}} \\ 
+                x_2^* = a = - \dfrac{4}{\sqrt{13}} 
+            \end{cases}
+        \end{equation*}
+
+        \textbf{Cách 6:} Sử dụng bất đẳng thức Cauchy - Schwarz:
+
     \end{loigiai}
 
     \newpage
