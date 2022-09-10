@@ -268,7 +268,11 @@
             \end{equation*}
 
             Vì $dom(f)$ là tập lồi và $\nabla^2 f(x) \succeq 0$ nên $f(x)=\dfrac{1}{2} \lVert x \rVert_2^2$ là một hàm lồi.
-            Bài toán tối ưu hóa trên có $f(x)$ là hàm lồi, không có ràng buộc bất đẳng thức và ràng buộc đẳng thức $Ax=y$ là hàm affine.
+
+            Ta xét hàm số $l(x) = Ax - y$. Ta nhận thấy hàm $l(x) - l(0) = Ax - y - (-y)=Ax$ là hàm tuyến tính.
+            Vì vậy hàm số $l(x)$ là hàm affine.
+
+            Bài toán tối ưu hóa trên có $f(x)$ là hàm lồi, không có ràng buộc bất đẳng thức và ràng buộc đẳng thức $l(x)=0$ với $l(x)$ là hàm affine.
             Vì vậy bài toán tối ưu trên là một bài toán lồi.
 
             \item Hãy xây dựng hàm Lagrange của bài toán.
@@ -835,9 +839,12 @@
 
         Sử dụng bất đẳng thức Cauchy - Schwarz:
 
+        \begin{equation} \label{eq:BDT}
+            \Big ( 3(x_1 - 1) + 2x_2 \Big )^2 \leq (3^2 + 2^2)\Big ( (x_1 - 1)^2 + x_2^2 \Big) = 13\times4 = 52
+        \end{equation}
+
         \begin{equation*}
             \begin{aligned}
-            &\Big ( 3(x_1 - 1) + 2x_2 \Big )^2 \leq (3^2 + 2^2)\Big ( (x_1 - 1)^2 + x_2^2 \Big) = 13\times4 = 52 \\
             \Leftrightarrow & - 2\sqrt{13} \leq 3(x_1 - 1) + 2x_2 \leq 2 \sqrt{13} \\
             \Leftrightarrow & - 2 \sqrt{13} \leq 3 x_1 + 2 x_2 - 3 \leq 2 \sqrt{13} \\
             \Leftrightarrow & - 2 \sqrt{13} \leq f(x_1, x_2) - 3 \leq 2 \sqrt{13} \\
@@ -845,7 +852,7 @@
             \end{aligned}
         \end{equation*}
 
-        Dấu "=" xảy ra khi và chỉ khi:
+        Dấu "=" của bất đẳng thức (\ref{eq:BDT}) xảy ra khi và chỉ khi:
 
         \begin{equation*}
             \begin{aligned}
